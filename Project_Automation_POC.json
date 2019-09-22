@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "fef96150-af38-44b8-a8d0-cfbbb53527a8",
+		"name": "Automation_POC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SmokeTesting",
+			"item": [
+				{
+					"name": "Add_New_Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "80ef8b3a-ec2c-479d-ab37-340068a9cef2",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Set Student ID\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    st_id=jsonData.id;",
+									"    pm.environment.set(\"Student_Id\", st_id);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"A\",\r\n  \"middle_name\": \"B\",\r\n  \"last_name\": \"sample string 4\",\r\n  \"date_of_birth\": \"sample string 5\"\r\n}"
+						},
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchStudentDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d414aae-ac55-4f4d-872e-a060b1a1f576",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStudentsDetails",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{Student_Id}},\r\n  \"first_name\": \"Testing\",\r\n  \"middle_name\": \"Automation\",\r\n  \"last_name\": \"sample string 4\",\r\n  \"date_of_birth\": \"sample string 5\"\r\n}"
+						},
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DataDrivenTesting",
+			"item": [
+				{
+					"name": "Add_New_Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "80ef8b3a-ec2c-479d-ab37-340068a9cef2",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Set Student ID\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    st_id=jsonData.id;",
+									"    pm.environment.set(\"Student_Id\", st_id);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"{{First_Name}}\",\r\n  \"middle_name\": \"B\",\r\n  \"last_name\": \"{{Last_Name}}\",\r\n  \"date_of_birth\": \"sample string 5\"\r\n}"
+						},
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchStudentDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d414aae-ac55-4f4d-872e-a060b1a1f576",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStudentsDetails",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{Student_Id}},\r\n  \"first_name\": \"Testing\",\r\n  \"middle_name\": \"Automation\",\r\n  \"last_name\": \"sample string 4\",\r\n  \"date_of_birth\": \"sample string 5\"\r\n}"
+						},
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStudent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://thetestingworldapi.com/api/studentsDetails/{{Student_Id}}",
+							"protocol": "http",
+							"host": [
+								"thetestingworldapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"studentsDetails",
+								"{{Student_Id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

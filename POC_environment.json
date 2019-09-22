@@ -1,0 +1,24 @@
+{
+	"id": "45409737-b556-4ae4-955d-584675a37feb",
+	"name": "POC_QA",
+	"values": [
+		{
+			"key": "Student_Id",
+			"value": 145382,
+			"enabled": true
+		},
+		{
+			"key": "First_Name",
+			"value": "Testing",
+			"enabled": true
+		},
+		{
+			"key": "Last_Name",
+			"value": "World",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-09-22T04:23:16.197Z",
+	"_postman_exported_using": "Postman/7.5.0"
+}
